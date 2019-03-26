@@ -12,22 +12,22 @@ class Register extends React.Component {
 
 	onNameChange = (event) => {
 		this.setState({name: event.target.value})
-		console.log(this.state.name)
+		//console.log(this.state.name)
 	}
 
 	onEmailChange = (event) => {
 		this.setState({email: event.target.value})
-		console.log(this.state.email)
+		//console.log(this.state.email)
 	}
 
 	onPasswordChange = (event) => {
 		this.setState({password: event.target.value})
-		console.log(this.state.password)
+		//console.log(this.state.password)
 	}
 
 	onSubmitSignIn = () => { //This runs when user enters email, password, and signs in.
-		console.log(this.state);
-		fetch('http://localhost:3000/register', {
+		//console.log(this.state);
+		fetch('https://cryptic-garden-13443.herokuapp.com/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -38,7 +38,7 @@ class Register extends React.Component {
 		})
 			.then(response => response.json())
 			.then(user => {
-				if (user) {
+				if (user.id) {
 					this.props.loadUser(user);
 					this.props.onRouteChange('home');
 				}
